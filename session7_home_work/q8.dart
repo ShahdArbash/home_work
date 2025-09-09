@@ -7,11 +7,11 @@ import 'dart:io';
 
 void main() {
   print('Enter the number');
-  int number = int.parse(stdin.readLineSync()!);
+  String input = stdin.readLineSync()!;
+  List numbers = input.split('').toList();
   int sum = 0;
-  for (int i = 1; i <= number; i++) {
-    sum = sum + i;
+  for (int i = 0; i < numbers.length; i++) {
+    sum = sum + int.parse(numbers[i]);
   }
   print(sum);
-  print(number);
 }
