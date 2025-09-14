@@ -15,6 +15,7 @@ void main() {
     numberList.add(number);
     secund = numberList[0];
     if (numberList[i] > largest) {
+      // secund = largest;
       largest = numberList[i];
     }
   }
