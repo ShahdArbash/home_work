@@ -13,41 +13,22 @@ void main() {
   String? input = stdin.readLineSync();
   List brackets = input!.split('').toList();
   List openBrakets = [];
-  List closerBrakets = [];
-  bool isOpen = true;
-  bool result = true;
+  Map mapBrackets = {'(': ')', '[': ']', '{': '}'};
 
   for (int i = 0; i < brackets.length; i++) {
-    if (isOpen) {
-      if (brackets[i] == '(' || brackets[i] == '[' || brackets[i] == '{') {
-        openBrakets.add(brackets[i]);
+    if (brackets[i] == '(' || brackets[i] == '[' || brackets[i] == '{') {
+      openBrakets.add(brackets[i]);
+    } else {
+      if (openBrakets.isNotEmpty &&
+          mapBrackets[openBrakets.last] != brackets[i]) {
+        print('invalid');
+        return;
       } else {
-        isOpen = false;
+        openBrakets.remove(openBrakets.last);
       }
     }
-    if (brackets[i] == ')' || brackets[i] == ']' || brackets[i] == '}') {
-      closerBrakets.add(brackets[i]);
-    }
   }
-
-  if (openBrakets.length != closerBrakets.length) {
-    print('invalid');
-    return;
-  }
-
-  int j = openBrakets.length - 1;
-  for (int i = 0; i < openBrakets.length; i++) {
-    if ((openBrakets[i] == '(' && closerBrakets[j] == ')') ||
-        (openBrakets[i] == '[' && closerBrakets[j] == ']') ||
-        (openBrakets[i] == '{' && closerBrakets[j] == '}')) {
-      result = true;
-    } else {
-      result = false;
-    }
-    j--;
-  }
-
-  if (result) {
+  if (openBrakets.isEmpty) {
     print('valid');
   } else {
     print('invalid');
