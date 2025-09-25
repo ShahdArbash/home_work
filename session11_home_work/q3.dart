@@ -29,22 +29,22 @@ int Search(List<int> numbers, int numberSearch) {
   return -1;
 }
 
-int search(List<int> numbers, int numberSearch) {
-  int indexMid = numbers.length ~/ 2;
-  if (numberSearch == numbers[indexMid]) {
-    return indexMid;
-  } else if (numberSearch > numbers[indexMid]) {
-    for (int i = indexMid + 1; i < numbers.length; i++) {
-      if (numberSearch == numbers[i]) {
-        return i;
-      }
-    }
-  } else {
-    for (int i = 0; i < indexMid; i++) {
-      if (numberSearch == numbers[i]) {
-        return i;
-      }
-    }
-  }
-  return -1;
-}
+// int search(List<int> numbers, int numberSearch) {
+//   int indexMid = numbers.length ~/ 2;
+//   if (numberSearch == numbers[indexMid]) {
+//     return indexMid;
+//   } else if (numberSearch > numbers[indexMid]) {
+//     for (int i = indexMid + 1; i < numbers.length; i++) {
+//       if (numberSearch == numbers[i]) {
+//         return i;
+//       }
+//     }
+//   } else {
+//     for (int i = 0; i < indexMid; i++) {
+//       if (numberSearch == numbers[i]) {
+//         return i;
+//       }
+//     }
+//   }
+//   return -1;
+// }
