@@ -8,7 +8,7 @@ void main() {
   List<int>? numbers = [];
   // List<int>? numbers;
   // List<int>? numbers = [1,2,3,4,5];
-  bool isNullOrEmpty = numbers == null || numbers.isEmpty;
+  bool isNullOrEmpty = numbers.isEmpty;
   if (isNullOrEmpty) {
     print('No scores');
   } else {

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 void main() {
   print(isAnagram("anagram", "nagaram"));
 }
