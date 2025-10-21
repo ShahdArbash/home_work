@@ -10,8 +10,8 @@ class PartBoxBebeGreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        BoxBebeGreen(color: Color(0xffFFB2DFDC)),
-        BoxBebeGreen(color: Color(0xffFF80CBC4)),
+        BoxBebeGreen(color: Color(0xffffb2dfdc)),
+        BoxBebeGreen(color: Color(0xffff80cbc4)),
       ],
     );
   }

@@ -10,7 +10,7 @@ class BoxPurpule extends StatelessWidget {
     return boxItem(
       width: 85,
       height: 90,
-      color: const Color(0xffFFE1BEE8),
+      color: const Color(0xffffe1bee8),
       child: child,
     );
   }

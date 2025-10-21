@@ -10,10 +10,10 @@ class RowGrey extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        boxItem(width: 30, height: 20, color: Color(0xffFFE0E0E0)),
+        boxItem(width: 30, height: 20, color: Color(0xffffe0e0e0)),
         Expanded(
           child: boxItem(
-              width: double.infinity, height: 20, color: Color(0xffFFE0E0E0)),
+              width: double.infinity, height: 20, color: Color(0xffffe0e0e0)),
         ),
       ],
     );

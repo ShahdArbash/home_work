@@ -10,7 +10,7 @@ class PartBoxPerpule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffFFF3E5F6),
+      color: Color(0xfffff3e5f6),
       child: Row(
         children: [
           BoxPurpule(),
