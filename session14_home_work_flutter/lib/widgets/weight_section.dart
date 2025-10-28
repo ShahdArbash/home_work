@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/button_action.dart';
+import 'package:flutter_application_3/widgets/button_action.dart';
 
 class WeightAndAgeCard extends StatefulWidget {
   final String label;
@@ -38,7 +38,7 @@ class _WeightAndAgeCardState extends State<WeightAndAgeCard> {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -54,23 +54,30 @@ class _WeightAndAgeCardState extends State<WeightAndAgeCard> {
                 fontSize: 60,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ButtonAction(
-                  text: '-',
-                  onPressed: () {
-                    if (value > 1) _updateValue(value - 1);
-                  },
-                ),
-                const SizedBox(width: 10),
-                ButtonAction(
-                  text: '+',
-                  onPressed: () {
-                    _updateValue(value + 1);
-                  },
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: ButtonAction(
+                      text: '-',
+                      onPressed: () {
+                        if (value > 1) _updateValue(value - 1);
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: ButtonAction(
+                      text: '+',
+                      onPressed: () {
+                        _updateValue(value + 1);
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

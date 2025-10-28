@@ -16,8 +16,6 @@ class ButtonAction extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         alignment: Alignment.center,
-        width: 70,
-        height: 70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(70),
           color: const Color(0xff4b4e5f),
