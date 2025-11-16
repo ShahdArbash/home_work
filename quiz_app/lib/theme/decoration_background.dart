@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/theme/app_decoration.dart';
 
 class DecorationBackground extends StatelessWidget {
   final Widget CompunentsOfPage;
@@ -12,13 +13,7 @@ class DecorationBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xff060B26), Color(0xff1A1F37)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
+      decoration: AppDecoration.MainBackgroundDecoration,
       child: Stack(
         children: [
           if (isCenterGradient) ...{

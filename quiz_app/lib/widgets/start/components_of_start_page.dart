@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/widgets/button_start.dart';
+import 'package:quiz_app/widgets/start/button_start.dart';
 
 class ComponentsOfStartPage extends StatelessWidget {
   const ComponentsOfStartPage({super.key});
