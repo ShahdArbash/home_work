@@ -8,7 +8,7 @@ class QuizManger {
       title_question:
           'How would you describe your level of satisfaction with the healthcare system?',
       options: ['Strongly satisfied', 'Satisfied', 'NOT ACTIVE', 'Rome'],
-      correctAnswerIndex: 2,
+      correctAnswersIndexes: [1],
       image: Assets.q1,
       isMultiple: false,
     ),
@@ -16,7 +16,7 @@ class QuizManger {
       numberofQuistion: 2,
       title_question: 'Which planet is known as the Red Planet?',
       options: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
-      correctAnswerIndex: 1,
+      correctAnswersIndexes: [1],
       image: Assets.q2,
       isMultiple: false,
     ),
@@ -29,7 +29,7 @@ class QuizManger {
         'Mark Twain',
         'Leo Tolstoy',
       ],
-      correctAnswerIndex: 1,
+      correctAnswersIndexes: [1, 2],
       image: Assets.q3,
       isMultiple: true,
     ),
@@ -43,7 +43,7 @@ class QuizManger {
         'Arctic Ocean',
         'Pacific Ocean',
       ],
-      correctAnswerIndex: 3,
+      correctAnswersIndexes: [1, 2],
       image: Assets.q4,
       isMultiple: true,
     ),
@@ -53,9 +53,28 @@ class QuizManger {
     question.selectAnswerUser = userAnswer;
   }
 
-  bool isCorrect(QuestionModel question) {
+  bool isCorrectSingle(QuestionModel question) {
     return question.selectAnswerUser ==
-        question.options[question.correctAnswerIndex];
+        question.options[question.correctAnswersIndexes.first];
+  }
+
+  bool isCorrectMulti(QuestionModel question) {
+    final correctAnswers = question.correctAnswersIndexes
+        .map((index) => question.options[index])
+        .toList();
+
+    return Set.from(
+          question.multiSelectedAnswers,
+        ).containsAll(correctAnswers) &&
+        correctAnswers.length == question.multiSelectedAnswers.length;
+  }
+
+  bool isCorrect(QuestionModel question) {
+    if (question.isMultiple) {
+      return isCorrectMulti(question);
+    } else {
+      return isCorrectSingle(question);
+    }
   }
 
   int getCorrectAnswersCount() {

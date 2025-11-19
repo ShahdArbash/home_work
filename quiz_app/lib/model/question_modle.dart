@@ -3,7 +3,9 @@ class QuestionModel {
   final String image;
   final String title_question;
   final List<String> options;
-  final int correctAnswerIndex;
+
+  final List<int> correctAnswersIndexes;
+
   String selectAnswerUser = '';
   List<String> multiSelectedAnswers = [];
   final bool isMultiple;
@@ -13,7 +15,7 @@ class QuestionModel {
     required this.numberofQuistion,
     required this.title_question,
     required this.options,
-    required this.correctAnswerIndex,
+    required this.correctAnswersIndexes,
     required this.image,
   });
 }

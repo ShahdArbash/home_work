@@ -3,6 +3,7 @@ import 'package:quiz_app/model/quiz_manger.dart';
 import 'package:quiz_app/theme/app_colors.dart';
 import 'package:quiz_app/theme/app_text_styles.dart';
 import 'package:quiz_app/theme/decoration_background.dart';
+import 'package:quiz_app/widgets/retry_button_action.dart';
 
 class ResultPage extends StatelessWidget {
   final QuizManger quizManger;
@@ -58,24 +59,7 @@ class ResultPage extends StatelessWidget {
 
                 SizedBox(height: 40),
 
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.secondaryColor.withValues(
-                      alpha: 0.4,
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "Retry Quiz",
-                    style: AppTextStyles.bold16(color: AppColors.meanWhite),
-                  ),
-                ),
+                RetryButtonAction(quizManger: quizManger),
               ],
             ),
           ),

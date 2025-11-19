@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/constants/assets.dart';
+import 'package:quiz_app/theme/app_colors.dart';
+import 'package:quiz_app/theme/app_text_styles.dart';
 import 'package:quiz_app/widgets/start/button_start.dart';
 
 class ComponentsOfStartPage extends StatelessWidget {
@@ -14,23 +17,18 @@ class ComponentsOfStartPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Good morning,",
-                style: TextStyle(color: Color(0xffFFFFFF), fontSize: 16),
+                style: AppTextStyles.regular16(color: AppColors.meanWhite),
               ),
               const SizedBox(height: 8),
 
-              const Text(
+              Text(
                 "New topic is waiting",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppTextStyles.medium24(color: AppColors.meanWhite),
               ),
               SizedBox(height: 14),
-              Image.asset("asset/images/home_image/home_image.png"),
+              Image.asset(Assets.homeImage),
               Expanded(child: SizedBox()),
               Row(children: [Expanded(child: ButtonStart())]),
             ],

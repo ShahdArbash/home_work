@@ -27,28 +27,6 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  void nextAction() {
-    if (widget.currentIndexQuestion < widget.quizManger.quizData.length - 1) {
-      widget.currentIndexQuestion++;
-      pageController.animateToPage(
-        widget.currentIndexQuestion,
-        duration: Duration(milliseconds: 10),
-        curve: Curves.linear,
-      );
-    }
-  }
-
-  void backAction() {
-    if (widget.currentIndexQuestion > 0) {
-      widget.currentIndexQuestion--;
-      pageController.animateToPage(
-        widget.currentIndexQuestion,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -67,6 +45,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: Column(
               children: [
+                SizedBox(height: 20),
                 Expanded(
                   child: PageView.builder(
                     controller: pageController,
@@ -93,20 +72,7 @@ class _HomePageState extends State<HomePage> {
                     widget.currentIndexQuestion !=
                             widget.quizManger.quizData.length - 1
                         ? ButtonNextAction(ontap: nextAction)
-                        : ButtonResultAction(
-                            ontap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return ResultPage(
-                                      quizManger: widget.quizManger,
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          ),
+                        : ButtonResultAction(ontap: resultAction),
                   ],
                 ),
               ],
@@ -115,5 +81,46 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void nextAction() {
+    if (widget.currentIndexQuestion < widget.quizManger.quizData.length - 1) {
+      widget.currentIndexQuestion++;
+      pageController.animateToPage(
+        widget.currentIndexQuestion,
+        duration: Duration(milliseconds: 10),
+        curve: Curves.linear,
+      );
+    }
+  }
+
+  void backAction() {
+    if (widget.currentIndexQuestion > 0) {
+      widget.currentIndexQuestion--;
+      pageController.animateToPage(
+        widget.currentIndexQuestion,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  void resetQuiz() {
+    setState(() {
+      widget.currentIndexQuestion = 0;
+      pageController.jumpToPage(0);
+    });
+  }
+
+  void resultAction() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return ResultPage(quizManger: widget.quizManger);
+        },
+      ),
+    );
+    resetQuiz();
   }
 }
