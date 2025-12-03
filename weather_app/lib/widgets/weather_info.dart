@@ -4,6 +4,7 @@ import 'package:weather_app/models/weather_model.dart';
 class WeatherInfo extends StatelessWidget {
   WeatherInfo({super.key, required this.weatherModel});
   final WeatherModel weatherModel;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,7 +29,7 @@ class WeatherInfo extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              'updated at : $weatherModel.date',
+              'updated at : ${weatherModel.date.hour}:${weatherModel.date.minute} ',
               style: const TextStyle(fontSize: 14, color: Colors.black54),
             ),
             const SizedBox(height: 32),
@@ -37,12 +38,11 @@ class WeatherInfo extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Weather icon
                   const Icon(Icons.cloud, size: 72, color: Colors.white),
                   const SizedBox(width: 24),
-                  // Current temperature
+
                   Text(
-                    weatherModel.avgTemp.toString(),
+                    weatherModel.avgTemp.toInt().toString(),
                     style: const TextStyle(
                       fontSize: 48,
                       fontWeight: FontWeight.bold,
@@ -89,4 +89,8 @@ class WeatherInfo extends StatelessWidget {
       ),
     );
   }
+}
+
+DateTime stringToDateTime(String dateString) {
+  return DateTime.parse(dateString);
 }

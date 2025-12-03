@@ -13,7 +13,7 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: MaterialApp(home: HomeView()),
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: HomeView()),
     );
   }
 }
