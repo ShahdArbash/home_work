@@ -1,29 +1,29 @@
 import 'package:dio/dio.dart';
-import 'package:weather_app/models/forecast_day.dart';
+import 'package:weather_app/models/weather_model.dart';
 
 class WeatherService {
-  final Dio dio = Dio();
-  List<ForecastDay> listDataWeather = [];
-  Future<List<ForecastDay>> getForecast(String city) async {
-    const String apiKey = "45f80c1274354e0abe4174454252611";
+  String apiKey = "45f80c1274354e0abe4174454252611";
+  String baseUrl = "http://api.weatherapi.com/v1";
+  final Dio dio;
 
-    final response = await dio.get(
-      "http://api.weatherapi.com/v1/forecast.json",
-      queryParameters: {"key": apiKey, "q": city, "days": 7},
-    );
+  WeatherService({required this.dio});
 
-    final List<dynamic> DataWeather = response.data["forecast"]["forecastday"];
-    for (var element in DataWeather) {
-      listDataWeather.add(
-        ForecastDay(
-          date: element["date"],
-          maxTemp: element["day"]["maxtemp_c"],
-          minTemp: element["day"]["mintemp_c"],
-          conditionText: element["day"]["condition"]["text"],
-          icon: element["day"]["condition"]["icon"],
-        ),
+  getForecast({required String city}) async {
+    try {
+      final response = await dio.get(
+        "$baseUrl/forecast.json",
+        queryParameters: {"key": apiKey, "q": city, "days": 7},
       );
+      WeatherModel weatherModel = WeatherModel.fromJson(response.data);
+      return weatherModel;
+    } on DioException catch (e) {
+      String errorMessage =
+          e.response?.data['error']['message'] ??
+          "opps! something went wrong try again later";
+
+      throw Exception(errorMessage);
+    } catch (e) {
+      throw Exception("opps! something went wrong try again later");
     }
-    return listDataWeather;
   }
 }

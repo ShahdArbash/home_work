@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/app_bar_method.dart';
+import 'package:weather_app/cubit/get_weather_cubit.dart';
+import 'package:weather_app/cubit/get_weather_stat.dart';
 import 'package:weather_app/views/search_view.dart';
 import 'package:weather_app/widgets/no_weather_city.dart';
+import 'package:weather_app/widgets/weather_info.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -27,7 +31,21 @@ class HomeView extends StatelessWidget {
         ],
         title: 'Weather App',
       ),
-      body: NoWeatherCity(),
+      body: BlocBuilder<GetWeatherCubit, GetWeatherState>(
+        builder: (context, state) {
+          if (state is GetWeatherStatInitial) {
+            return NoWeatherCity();
+          } else if (state is GetWeatherStatLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is GetWeatherStatSuccess) {
+            return WeatherInfo(weatherModel: state.weatherModel);
+          } else if (state is GetWeatherStatFailure) {
+            return Center(child: Text('Error: ${state.message}'));
+          } else {
+            return Center(child: Text('Unknown state'));
+          }
+        },
+      ),
     );
   }
 }

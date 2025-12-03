@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/news_app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/news_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/news_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/quiz_app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/quiz_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/quiz_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/session12_home_work_flutter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/session12_home_work_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/session12_home_work_flutter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/session13_home_work_flutter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/session13_home_work_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/session13_home_work_flutter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/session14_home_work_flutter/bmi_application/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/session14_home_work_flutter/bmi_application/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/session14_home_work_flutter/bmi_application/build" />
+      <excludeFolder url="file://$MODULE_DIR$/session15_home_work_flutter/flutter_application_4/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/session15_home_work_flutter/flutter_application_4/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/session15_home_work_flutter/flutter_application_4/build" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/weather_app/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
