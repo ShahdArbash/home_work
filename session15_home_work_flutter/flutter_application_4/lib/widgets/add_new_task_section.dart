@@ -7,12 +7,14 @@ class AddNewTaskSection extends StatelessWidget {
   final Task newtask;
   final VoidCallback onAddTask;
   final Function(String) onTextChanged;
+  final TextEditingController controller;
 
   const AddNewTaskSection({
     super.key,
     required this.newtask,
     required this.onAddTask,
     required this.onTextChanged,
+    required this.controller,
   });
 
   @override
@@ -38,6 +40,7 @@ class AddNewTaskSection extends StatelessWidget {
               child: TextFieldNewTask(
                 newtask: newtask,
                 onTextChanged: onTextChanged,
+                controller: controller,
               ),
             ),
             ButtonActionAddNewTask(addTask: onAddTask),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
-import 'package:news_app/services/get_news.dart';
 import 'package:news_app/widgets/Category/category_item.dart';
 
 class ListCategory extends StatelessWidget {

@@ -4,34 +4,28 @@ import 'package:flutter_application_4/list_tasks.dart';
 class TextFieldNewTask extends StatefulWidget {
   final Task newtask;
   final Function(String) onTextChanged;
+  final TextEditingController controller;
+
   const TextFieldNewTask({
     super.key,
     required this.newtask,
     required this.onTextChanged,
+    required this.controller,
   });
+
   @override
   State<TextFieldNewTask> createState() => _TextFieldNewTaskState();
 }
 
 class _TextFieldNewTaskState extends State<TextFieldNewTask> {
-  final myController = TextEditingController();
-  @override
-  void dispose() {
-    myController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: myController,
+      controller: widget.controller,
       onChanged: (value) {
-        setState(() {
-          widget.newtask.title = value;
-          widget.newtask.isCompleted = false;
-          widget.newtask.date = DateTime.now().toString();
-          widget.onTextChanged(value);
-        });
+        widget.newtask.title = value;
+
+        widget.onTextChanged(value);
       },
       decoration: InputDecoration(
         hintText: 'Add a new task...',

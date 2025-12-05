@@ -4,7 +4,7 @@ import 'package:news_app/services/get_news.dart';
 import 'package:news_app/widgets/List_News/list_news.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
-  NewsListViewBuilder({super.key, required this.categoryName});
+  const NewsListViewBuilder({super.key, required this.categoryName});
   final String categoryName;
 
   @override

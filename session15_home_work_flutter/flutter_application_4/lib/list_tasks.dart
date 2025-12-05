@@ -1,8 +1,11 @@
 class Task {
   String title;
-  String date;
+  DateTime date;
   bool isCompleted;
   Task({required this.title, required this.date, this.isCompleted = false});
+  String printDateTask(DateTime date) {
+    return '${date.day}/${date.month}/${date.year}';
+  }
 }
 
 class TasksApp {

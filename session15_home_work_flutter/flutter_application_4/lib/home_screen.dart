@@ -11,20 +11,27 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+final myController = TextEditingController();
+Task newTask = Task(title: '', isCompleted: false, date: DateTime.now());
+
+@override
 TasksApp tasks = TasksApp();
+final now = DateTime.now();
 
 class _HomeScreenState extends State<HomeScreen> {
   String currentTaskTitle = '';
 
   void addNewTask() {
     if (currentTaskTitle.trim().isEmpty) return;
-    final now = DateTime.now();
+
     setState(() {
       tasks.addTask(Task(
         title: currentTaskTitle,
         isCompleted: false,
-        date: DateTime(now.year, now.month, now.day).toString(),
+        date: DateTime(now.day, now.month, now.year),
       ));
+      myController.clear();
+
       currentTaskTitle = '';
     });
   }
@@ -48,16 +55,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 : ListView.builder(
                     itemCount: tasks.allTasks.length,
                     itemBuilder: (context, index) {
-                      return CardTaskItem(newtask: tasks.allTasks[index]);
+                      return CardTaskItem(
+                        newtask: tasks.allTasks[index],
+                        onremove: () {
+                          setState(() {
+                            tasks.removeTask(tasks.allTasks[index]);
+                          });
+                        },
+                      );
                     },
                   ),
           ),
           AddNewTaskSection(
-            newtask: Task(title: '', date: ''),
+            newtask: newTask,
             onAddTask: addNewTask,
             onTextChanged: (value) {
               currentTaskTitle = value;
             },
+            controller: myController,
           ),
         ],
       ),

@@ -40,7 +40,16 @@ class HomeView extends StatelessWidget {
           } else if (state is GetWeatherStatSuccess) {
             return WeatherInfo(weatherModel: state.weatherModel);
           } else if (state is GetWeatherStatFailure) {
-            return Center(child: Text('Error: ${state.message}'));
+            return Center(
+              child: Text(
+                'Error: ${state.message}',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
           } else {
             return Center(child: Text('Unknown state'));
           }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 AppBar AppBarMethod({required List<Widget> actions, required String title}) {
   return AppBar(
-    title: Text(title),
-    backgroundColor: Color(0xff2196F3),
-    foregroundColor: Colors.white,
+    elevation: 3,
+    shadowColor: Colors.grey[400],
+    title: Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
     actions: actions,
   );
 }
